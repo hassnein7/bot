@@ -1,0 +1,21 @@
+{
+  "name": "بوت المحاسبة الشخصية",
+  "description": "بوت تليغرام للمحاسبة الشخصية يعمل على مدار الساعة",
+  "repository": "https://github.com/yourusername/accounting-bot",
+  "keywords": ["python", "telegram", "bot", "accounting"],
+  "env": {
+    "BOT_TOKEN": {
+      "description": "توكن البوت الخاص بك من BotFather",
+      "required": true
+    },
+    "APP_URL": {
+      "description": "عنوان URL للتطبيق (سيتم تعيينه تلقائياً بواسطة Heroku)",
+      "required": true
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
