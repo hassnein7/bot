@@ -1,4 +1,4 @@
-\nimport logging
+import logging
 import datetime
 import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
