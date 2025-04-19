@@ -1,0 +1,31 @@
+run = "python main.py"
+language = "python"
+entrypoint = "main.py"
+
+[env]
+PYTHON_VERSION = "3.11.6"
+
+[nix]
+channel = "stable-22_11"
+
+[packager]
+auto-install = true
+
+[packager.features]
+packageSearch = true
+guessImports = true
+
+[unitTest]
+language = "python"
+
+[languages.python]
+pattern = "**/*.py"
+syntax = "python"
+symbol-server = {url = "https://python.replit.com"}
+
+[languages.python.languageServer]
+start = ["pyls"]
+
+[deployment]
+run = ["python", "main.py"]
+deploymentTarget = "cloudrun"
