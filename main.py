@@ -174,6 +174,16 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # الدالة الرئيسية
 def main():
     """تشغيل البوت"""
+    # طباعة معلومات تشخيصية
+    logger.info(f"بدء تشغيل البوت...")
+    logger.info(f"قيمة BOT_TOKEN: {'تم تعيينها' if BOT_TOKEN else 'غير معينة!'}")
+    
+    # التحقق من وجود توكن البوت
+    if not BOT_TOKEN:
+        logger.error("خطأ: لم يتم تعيين BOT_TOKEN. يرجى تعيين متغير البيئة BOT_TOKEN.")
+        print("خطأ: لم يتم تعيين BOT_TOKEN. يرجى تعيين متغير البيئة BOT_TOKEN.")
+        return
+    
     # إنشاء تطبيق
     application = Application.builder().token(BOT_TOKEN).build()
     
@@ -192,11 +202,16 @@ def main():
     application.add_handler(CallbackQueryHandler(handle_callback))
     
     # تشغيل البوت
-    # استخدام webhook للتوافق مع منصة Render إذا كان متغير PORT موجوداً
+    # التحقق من بيئة التشغيل (Replit أو غيرها)
+    is_replit = os.environ.get("REPL_ID") is not None
     port = int(os.environ.get("PORT", 8443))
     app_url = os.environ.get("APP_URL", "")
     
-    if app_url:
+    if is_replit:
+        # استخدام polling للتشغيل على Replit
+        logger.info("تم اكتشاف بيئة Replit، استخدام polling للتشغيل...")
+        application.run_polling()
+    elif app_url:
         # استخدام webhook للنشر على منصات سحابية
         application.run_webhook(
             listen="0.0.0.0",
