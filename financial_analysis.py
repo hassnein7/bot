@@ -65,6 +65,19 @@ def analyze_financial_report(report_text):
     
     return analysis_results
 
+# الدوال المستخدمة في main.py
+
+def analyze_report(report_text):
+    """تحليل التقرير المالي وتقديم ملاحظات وتوصيات"""
+    # هذه الدالة تستدعي الدالة الأساسية للتحليل
+    return analyze_financial_report(report_text)
+
+def check_financial_statements(statements_text):
+    """تحليل القوائم المالية وتقديم ملاحظات وتوصيات"""
+    # في هذا المثال البسيط، نفترض أن النص يحتوي على جميع القوائم المالية معاً
+    # في التطبيق الحقيقي، يمكن تحسين هذه الدالة لتحليل كل قائمة بشكل منفصل
+    return analyze_financial_statements(statements_text, statements_text)
+
 # تحليل النسب المالية
 def analyze_financial_ratios(assets, liabilities, equity, revenue, expenses):
     """تحليل النسب المالية الرئيسية"""
@@ -190,3 +203,16 @@ def analyze_financial_statements(balance_sheet_text, income_statement_text, cash
     analysis_results += "• راقب التغيرات في الاتجاهات المالية بشكل دوري.\n"
     
     return analysis_results
+
+# الدوال المستخدمة في main.py
+
+def analyze_report(report_text):
+    """تحليل التقرير المالي وتقديم ملاحظات وتوصيات"""
+    # هذه الدالة تستدعي الدالة الأساسية للتحليل
+    return analyze_financial_report(report_text)
+
+def check_financial_statements(statements_text):
+    """تحليل القوائم المالية وتقديم ملاحظات وتوصيات"""
+    # في هذا المثال البسيط، نفترض أن النص يحتوي على جميع القوائم المالية معاً
+    # في التطبيق الحقيقي، يمكن تحسين هذه الدالة لتحليل كل قائمة بشكل منفصل
+    return analyze_financial_statements(statements_text, statements_text)
